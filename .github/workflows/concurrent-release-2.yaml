@@ -1,0 +1,28 @@
+name: Release app2
+
+on:
+  push:
+    branches: [ 'main' ]
+    paths:
+      - "app_2/version"
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+concurrency: 
+  group: release-apps
+  
+jobs:
+  release-app2:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Read version into env
+      run: |
+        VER=$(cat app_2/version)
+        echo "VERSION=$VER" >> $GITHUB_ENV
+    - name: Sleep
+      run: sleep 2m
+    - name: End job
+      run: echo "Ended job"

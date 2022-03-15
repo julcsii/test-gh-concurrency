@@ -1,4 +1,4 @@
-name: Release apps
+name: Release app1
 
 on:
   push:
@@ -13,7 +13,7 @@ concurrency:
   group: release-apps
   
 jobs:
-  release-to-staging:
+  release-app1:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
